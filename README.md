@@ -1,2 +1,2 @@
-# Portofolio-RenaldiPasapan-20255520009
+# Portofolio-RenaldiPasapan
 Portofolio PKN 
