@@ -1,0 +1,2440 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renaldi Pasapan - Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=Merriweather:wght@400;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .portfolio-wrapper {
+      width: 100%;
+      min-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Typography System */
+    .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-subheading { font-family: 'Inter', sans-serif; }
+    .font-body { font-family: 'Merriweather', serif; }
+    .font-ui { font-family: 'Outfit', sans-serif; }
+
+    /* Theme Variables */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-tertiary: #64748b;
+      --accent: #3A7AFE;
+      --accent-hover: #2563eb;
+      --border: #e2e8f0;
+      --shadow: rgba(0, 0, 0, 0.08);
+      --shadow-lg: rgba(0, 0, 0, 0.12);
+      --card-bg: #ffffff;
+      --navbar-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    .dark-mode {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-tertiary: #94a3b8;
+      --accent: #60a5fa;
+      --accent-hover: #3b82f6;
+      --border: #334155;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --shadow-lg: rgba(0, 0, 0, 0.5);
+      --card-bg: #1e293b;
+      --navbar-bg: rgba(15, 23, 42, 0.85);
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.4s ease, color 0.4s ease;
+      cursor: none;
+    }
+
+    /* Animated Background - Interactive Gradient Mesh */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+      background: linear-gradient(135deg, 
+        rgba(58, 122, 254, 0.03) 0%, 
+        rgba(139, 92, 246, 0.03) 50%, 
+        rgba(236, 72, 153, 0.03) 100%);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: float 20s infinite ease-in-out;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 768px) {
+      .blob { 
+        filter: blur(60px); 
+        opacity: 0.25;
+      }
+      body {
+        cursor: auto;
+      }
+    }
+
+    .blob1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(58, 122, 254, 0.5) 0%, rgba(96, 165, 250, 0.2) 100%);
+      top: -150px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .blob2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(167, 139, 250, 0.2) 100%);
+      bottom: -200px;
+      right: -150px;
+      animation-delay: 7s;
+    }
+
+    .blob3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, rgba(244, 114, 182, 0.2) 100%);
+      top: 40%;
+      left: 60%;
+      animation-delay: 14s;
+    }
+
+    .blob4 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, rgba(58, 122, 254, 0.15) 100%);
+      top: 60%;
+      left: 20%;
+      animation-delay: 3s;
+    }
+
+    .blob5 {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, rgba(139, 92, 246, 0.15) 100%);
+      top: 20%;
+      right: 25%;
+      animation-delay: 10s;
+    }
+
+    @keyframes float {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg); 
+      }
+      25% { 
+        transform: translate(50px, -50px) scale(1.1) rotate(90deg); 
+      }
+      50% { 
+        transform: translate(30px, 40px) scale(0.9) rotate(180deg); 
+      }
+      75% { 
+        transform: translate(-40px, 20px) scale(1.05) rotate(270deg); 
+      }
+    }
+
+    /* Particles */
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* Custom Cursor - Ultra Minimalist & Smooth */
+    .custom-cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      background: var(--accent);
+      opacity: 0.95;
+      mix-blend-mode: difference;
+      will-change: transform;
+      transition: width 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  opacity 0.2s ease,
+                  background-color 0.2s ease;
+    }
+
+    .custom-cursor.hover {
+      width: 40px;
+      height: 40px;
+      opacity: 0.2;
+      background: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .custom-cursor {
+        display: none;
+      }
+    }
+
+    /* Cursor Trail - Fast Fade Dots */
+    .cursor-trail {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0;
+      will-change: opacity;
+      mix-blend-mode: normal;
+    }
+
+    @media (max-width: 768px) {
+      .cursor-trail {
+        display: none;
+      }
+    }
+
+    /* Navbar Component */
+    .navbar-component {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      background: var(--navbar-bg);
+      box-shadow: 0 2px 20px var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 8px 4px;
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    @media (hover: none) {
+      .nav-link:active {
+        opacity: 0.7;
+      }
+    }
+
+    /* Dark Mode Toggle Component */
+    .theme-toggle-component {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-tertiary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid var(--border);
+      position: relative;
+    }
+
+    .theme-toggle-component:active {
+      transform: scale(0.95);
+    }
+
+    @media (min-width: 769px) {
+      .theme-toggle-component {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .theme-toggle-component:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        transform: scale(1.05);
+      }
+    }
+
+    .theme-icon {
+      font-size: 24px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .theme-icon.hidden {
+      opacity: 0;
+      transform: rotate(180deg) scale(0);
+      position: absolute;
+    }
+
+    .theme-icon.visible {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 400px;
+      padding: 20px 0;
+    }
+
+    /* Hamburger Icon */
+    .hamburger {
+      width: 30px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    /* Card Component */
+    .card-component {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    @media (min-width: 769px) {
+      .card-component {
+        padding: 32px;
+      }
+      
+      .card-component:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px var(--shadow-lg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card-component:active {
+        transform: scale(0.98);
+      }
+    }
+
+    /* Module Card */
+    .module-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    @media (min-width: 769px) {
+      .module-card {
+        padding: 32px;
+      }
+      
+      .module-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 48px var(--shadow-lg);
+        border-color: var(--accent);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .module-card:active {
+        transform: scale(0.98);
+      }
+    }
+
+    .module-icon {
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .module-question {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 12px 16px;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Button Components */
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(58, 122, 254, 0.3);
+      min-height: 52px;
+      font-size: 16px;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.96);
+    }
+
+    @media (min-width: 769px) {
+      .btn-primary {
+        padding: 14px 32px;
+        min-height: 48px;
+      }
+      
+      .btn-primary:hover {
+        background: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(58, 122, 254, 0.4);
+      }
+    }
+
+    /* Home Navigation Card */
+    .home-nav-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 32px 24px;
+      border: 2px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--shadow);
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (min-width: 769px) {
+      .home-nav-card {
+        padding: 36px 28px;
+      }
+      
+      .home-nav-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 48px var(--shadow-lg);
+        border-color: var(--accent);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .home-nav-card:active {
+        transform: scale(0.98);
+      }
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #dc2626;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid #dc2626;
+      cursor: pointer;
+      min-height: 48px;
+    }
+
+    @media (min-width: 769px) {
+      .btn-secondary:hover {
+        background: #dc2626;
+        color: white;
+      }
+    }
+
+    /* Avatar Component */
+    .avatar-component {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      box-shadow: 0 8px 32px var(--shadow-lg);
+      position: relative;
+      animation: float-avatar 4s ease-in-out infinite;
+    }
+
+    @media (min-width: 769px) {
+      .avatar-component {
+        width: 200px;
+        height: 200px;
+        font-size: 80px;
+      }
+    }
+
+    .avatar-ring {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: pulse-ring 2.5s infinite;
+    }
+
+    @media (min-width: 769px) {
+      .avatar-ring {
+        width: 220px;
+        height: 220px;
+      }
+    }
+
+    @keyframes float-avatar {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 0.1;
+      }
+    }
+
+    /* Grid Component */
+    .grid-component {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .grid-component {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid-component {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+    }
+
+    /* Gallery Component */
+    .gallery-component {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-component {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-component {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .gallery-item {
+      background: var(--bg-tertiary);
+      border-radius: 16px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--accent);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    @media (min-width: 769px) {
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-item:active {
+        transform: scale(0.97);
+      }
+    }
+
+    /* Showcase Card */
+    .showcase-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    @media (min-width: 769px) {
+      .showcase-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 56px var(--shadow-lg);
+        border-color: var(--accent);
+      }
+
+      .showcase-card:hover .showcase-thumbnail {
+        transform: scale(1.05);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .showcase-card:active {
+        transform: scale(0.98);
+      }
+    }
+
+    .showcase-thumbnail {
+      background: var(--bg-tertiary);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s ease, background 0.4s ease;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .showcase-content {
+      padding: 24px;
+    }
+
+    @media (min-width: 769px) {
+      .showcase-content {
+        padding: 28px;
+      }
+    }
+
+    /* Text Section Component */
+    .text-section-component {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    @media (min-width: 769px) {
+      .text-section-component {
+        padding: 40px;
+      }
+    }
+
+    .text-section-component h2 {
+      font-size: 28px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 769px) {
+      .text-section-component h2 {
+        font-size: 36px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .text-section-component p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 769px) {
+      .text-section-component p {
+        font-size: 18px;
+        line-height: 1.9;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Reflection Page */
+    .reflection-container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @media (min-width: 769px) {
+      .reflection-container {
+        gap: 40px;
+      }
+    }
+
+    .reflection-card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 32px 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 32px var(--shadow);
+    }
+
+    @media (min-width: 769px) {
+      .reflection-card {
+        padding: 48px 40px;
+      }
+    }
+
+    .reflection-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 769px) {
+      .reflection-icon {
+        font-size: 64px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .reflection-text p {
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    @media (min-width: 769px) {
+      .reflection-text p {
+        font-size: 18px;
+        line-height: 2;
+      }
+    }
+
+    /* Footer Component */
+    .footer-component {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (min-width: 769px) {
+      .footer-component {
+        padding: 64px 32px;
+      }
+    }
+
+    .social-icon-component {
+      width: 56px;
+      height: 56px;
+      background: var(--bg-tertiary);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    @media (min-width: 769px) {
+      .social-icon-component {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+      }
+      
+      .social-icon-component:hover {
+        background: var(--accent);
+        transform: translateY(-4px) scale(1.08);
+        box-shadow: 0 8px 20px rgba(58, 122, 254, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .social-icon-component:active {
+        transform: scale(0.94);
+      }
+    }
+
+    /* Section Wrapper Component */
+    .section-wrapper {
+      width: 100%;
+      padding: 48px 20px;
+      opacity: 0;
+      animation: fadeInSection 0.8s ease forwards;
+    }
+
+    @media (min-width: 769px) {
+      .section-wrapper {
+        padding: 80px 32px;
+      }
+    }
+
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Modal Component */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 24px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90%;
+      overflow-y: auto;
+      padding: 24px;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @media (min-width: 769px) {
+      .modal-content {
+        padding: 40px;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-tertiary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 28px;
+      color: var(--text-primary);
+    }
+
+    @media (min-width: 769px) {
+      .close-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+      }
+      
+      .close-btn:hover {
+        background: var(--accent);
+        color: white;
+        transform: rotate(90deg);
+      }
+    }
+
+    /* Chip Component */
+    .chip-component {
+      display: inline-block;
+      padding: 8px 18px;
+      background: var(--bg-tertiary);
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    @media (min-width: 769px) {
+      .chip-component {
+        font-size: 13px;
+        padding: 6px 16px;
+      }
+    }
+
+    /* Scroll Reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Typography */
+    h1 { font-size: 36px; line-height: 1.2; }
+    h2 { font-size: 28px; line-height: 1.3; }
+    h3 { font-size: 22px; line-height: 1.4; }
+    h4 { font-size: 18px; line-height: 1.4; }
+    p { font-size: 16px; line-height: 1.7; }
+
+    @media (min-width: 769px) {
+      h1 { font-size: 56px; }
+      h2 { font-size: 36px; }
+      h3 { font-size: 24px; }
+      h4 { font-size: 20px; }
+      p { font-size: 17px; line-height: 1.8; }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Image Preview Modal */
+    .image-preview-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    .image-preview-content {
+      max-width: 98%;
+      max-height: 98%;
+      position: relative;
+      animation: zoomIn 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .image-preview-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .image-preview-content img {
+      max-width: 100%;
+      max-height: 95vh;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    @media (min-width: 1024px) {
+      .image-preview-content img {
+        max-height: 90vh;
+      }
+    }
+
+    .image-preview-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 28px;
+      color: #000;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .image-preview-close {
+        top: -60px;
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .image-preview-close:hover {
+        background: var(--accent);
+        color: white;
+        transform: rotate(90deg) scale(1.1);
+      }
+    }
+
+    .image-preview-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      color: #000;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .image-preview-nav.prev {
+      left: -70px;
+    }
+
+    .image-preview-nav.next {
+      right: -70px;
+    }
+
+    @media (max-width: 768px) {
+      .image-preview-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+      
+      .image-preview-nav.prev {
+        left: 10px;
+      }
+
+      .image-preview-nav.next {
+        right: 10px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .image-preview-nav:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+      }
+    }
+
+    .image-preview-counter {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 30px;
+      z-index: 10;
+    }
+
+    .zoom-btn {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #3A7AFE;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: #3A7AFE;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .zoom-btn:hover {
+      background: #3A7AFE;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .zoom-btn:active {
+      transform: scale(0.95);
+    }
+
+    .zoom-level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 14px;
+    }
+
+    /* Utility Classes */
+    .fade-in {
+      animation: fadeInSection 0.8s ease;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.6s ease;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- Animated Background (Home page only) -->
+  <div class="animated-bg" id="animatedBg" style="display: none;">
+   <div class="blob blob1"></div>
+   <div class="blob blob2"></div>
+   <div class="blob blob3"></div>
+   <div class="blob blob4"></div>
+   <div class="blob blob5"></div>
+   <canvas id="particleCanvas"></canvas>
+  </div><!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div id="app" class="portfolio-wrapper h-full"></div>
+  <script>
+    const defaultConfig = {
+      hero_title: "Portofolio Renaldi Pasapan",
+      hero_subtitle: "Dokumentasi Pembelajaran Mata Kuliah Kewarganegaraan",
+      cta_button: "Mulai Jelajahi",
+      intro_title: "Tentang Portfolio Ini",
+      intro_text: "Portfolio ini mendokumentasikan perjalanan pembelajaran saya dalam mata kuliah Kewarganegaraan. Di sini Anda akan menemukan ringkasan mingguan, karya-karya terbaik, dan refleksi mendalam tentang pengalaman belajar saya.",
+      footer_copyright: "© 2025 Renaldi Pasapan. All rights reserved.",
+      background_color: "#ffffff",
+      surface_color: "#ffffff",
+      text_color: "#1e293b",
+      primary_action_color: "#3A7AFE",
+      secondary_action_color: "#64748b",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    let currentPage = 'home';
+    let selectedModule = null;
+    let selectedShowcase = null;
+    let isDarkMode = false;
+    let mobileMenuOpen = false;
+    let imagePreview = { visible: false, images: [], currentIndex: 0, zoom: 1 };
+
+
+
+    // Particle Canvas Animation
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouseX = 0;
+    let mouseY = 0;
+    let particleAnimationId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function initParticles() {
+      resizeCanvas();
+      particles = [];
+      const particleCount = window.innerWidth < 768 ? 30 : 50;
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      if (currentPage === 'home') {
+        initParticles();
+      }
+    });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.radius = Math.random() * 2 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 80) {
+          this.x -= dx / dist * 0.4;
+          this.y -= dy / dist * 0.4;
+        }
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.fillStyle = isDarkMode ? 'rgba(96, 165, 250, 0.35)' : 'rgba(58, 122, 254, 0.35)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+      particleAnimationId = requestAnimationFrame(animateParticles);
+    }
+
+    function startParticleAnimation() {
+      if (!particleAnimationId) {
+        initParticles();
+        animateParticles();
+      }
+    }
+
+    function stopParticleAnimation() {
+      if (particleAnimationId) {
+        cancelAnimationFrame(particleAnimationId);
+        particleAnimationId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+      }
+    });
+
+
+
+    // Custom Cursor - Ultra Smooth & Responsive
+    const cursor = document.getElementById('customCursor');
+    let cursorX = 0;
+    let cursorY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let trailDots = [];
+    const maxTrails = 6;
+    let lastTrailTime = 0;
+    const trailInterval = 40;
+
+    // Smooth cursor follow with RAF
+    function animateCursor() {
+      const dx = targetX - cursorX;
+      const dy = targetY - cursorY;
+      
+      cursorX += dx * 0.18;
+      cursorY += dy * 0.18;
+
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+      
+      requestAnimationFrame(animateCursor);
+    }
+
+    if (window.innerWidth > 768) {
+      animateCursor();
+
+      document.addEventListener('mousemove', (e) => {
+        targetX = e.clientX - 4;
+        targetY = e.clientY - 4;
+
+        const now = Date.now();
+        if (now - lastTrailTime > trailInterval) {
+          createTrailDot(e.clientX, e.clientY);
+          lastTrailTime = now;
+        }
+      });
+
+      // Hover effects
+      const interactiveSelectors = 'a, button, .module-card, .showcase-card, .home-nav-card, .social-icon-component, .theme-toggle-component, .nav-link, .gallery-item, .hamburger';
+      
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.matches(interactiveSelectors) || e.target.closest(interactiveSelectors)) {
+          cursor.classList.add('hover');
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.matches(interactiveSelectors) || e.target.closest(interactiveSelectors)) {
+          cursor.classList.remove('hover');
+        }
+      });
+    }
+
+    function createTrailDot(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = x + 'px';
+      trail.style.top = y + 'px';
+      document.body.appendChild(trail);
+
+      trailDots.push(trail);
+
+      requestAnimationFrame(() => {
+        trail.style.opacity = '0.5';
+      });
+
+      setTimeout(() => {
+        trail.style.opacity = '0';
+      }, 100);
+
+      setTimeout(() => {
+        trail.remove();
+        trailDots = trailDots.filter(t => t !== trail);
+      }, 500);
+
+      if (trailDots.length > maxTrails) {
+        const oldTrail = trailDots.shift();
+        if (oldTrail) oldTrail.remove();
+      }
+    }
+
+    function toggleDarkMode() {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
+      render();
+    }
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      isDarkMode = true;
+      document.body.classList.add('dark-mode');
+    }
+
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      render();
+    }
+
+    function openImagePreview(images, index) {
+      imagePreview = { visible: true, images: images, currentIndex: index, zoom: 1 };
+      render();
+      setTimeout(() => {
+        setupImageZoom();
+        setupKeyboardNavigation();
+      }, 100);
+    }
+
+    function closeImagePreview() {
+      imagePreview = { visible: false, images: [], currentIndex: 0, zoom: 1 };
+      removeKeyboardNavigation();
+      render();
+    }
+
+    function navigateImage(direction) {
+      const newIndex = imagePreview.currentIndex + direction;
+      if (newIndex >= 0 && newIndex < imagePreview.images.length) {
+        imagePreview.currentIndex = newIndex;
+        imagePreview.zoom = 1;
+        render();
+        setTimeout(setupImageZoom, 100);
+      }
+    }
+
+    function zoomIn() {
+      if (imagePreview.zoom < 3) {
+        imagePreview.zoom += 0.25;
+        updateImageTransform();
+        render();
+      }
+    }
+
+    function zoomOut() {
+      if (imagePreview.zoom > 0.5) {
+        imagePreview.zoom -= 0.25;
+        updateImageTransform();
+        render();
+      }
+    }
+
+    function resetZoom() {
+      imagePreview.zoom = 1;
+      updateImageTransform();
+      render();
+    }
+
+    function updateImageTransform() {
+      const img = document.querySelector('.image-preview-wrapper img');
+      if (img) {
+        img.style.transform = `scale(${imagePreview.zoom})`;
+      }
+    }
+
+    function setupImageZoom() {
+      const wrapper = document.querySelector('.image-preview-wrapper');
+      const img = document.querySelector('.image-preview-wrapper img');
+      
+      if (!wrapper || !img) return;
+
+      wrapper.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          zoomIn();
+        } else {
+          zoomOut();
+        }
+      }, { passive: false });
+    }
+
+    function handleKeyDown(e) {
+      if (!imagePreview.visible) return;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (imagePreview.currentIndex > 0) {
+          navigateImage(-1);
+        }
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (imagePreview.currentIndex < imagePreview.images.length - 1) {
+          navigateImage(1);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeImagePreview();
+      } else if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        zoomIn();
+      } else if (e.key === '-' || e.key === '_') {
+        e.preventDefault();
+        zoomOut();
+      } else if (e.key === '0') {
+        e.preventDefault();
+        resetZoom();
+      }
+    }
+
+    function setupKeyboardNavigation() {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    function removeKeyboardNavigation() {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    window.toggleDarkMode = toggleDarkMode;
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.openImagePreview = openImagePreview;
+    window.closeImagePreview = closeImagePreview;
+    window.navigateImage = navigateImage;
+    window.zoomIn = zoomIn;
+    window.zoomOut = zoomOut;
+    window.resetZoom = resetZoom;
+
+    const modules = [
+      {
+        id: 1,
+        title: "Pertemuan 1: Ideologi dan Falsafah Bangsa",
+        question: "Bagaimana PKn membentuk warga yang sadar peran, dan mengapa Pancasila layak disebut dasar negara yang lahir dari pengalaman bangsa sendiri?",
+        summary: "PKn membangun warga negara yang bukan hanya taat aturan, tetapi mampu berpikir kritis dan bertanggung jawab terhadap kehidupan publik. Dengan memahami posisi sebagai subjek, warga belajar berperan aktif mengawasi negara agar tetap melayani kepentingan rakyat.",
+        fullDescription: "Pertemuan pertama membahas bagaimana Pendidikan Kewarganegaraan membentuk warga negara yang sadar akan perannya dalam kehidupan berbangsa dan bernegara. PKn bukan sekadar pembelajaran tentang taat aturan, melainkan membangun kemampuan berpikir kritis dan bertanggung jawab terhadap kehidupan publik. Pancasila layak disebut fondasi historis karena nilai-nilainya digali dari budaya dan pengalaman panjang masyarakat Nusantara, bukan dari tekanan politik luar.",
+        reflection: "Saya menyadari bahwa menjadi warga negara yang baik bukan hanya tentang menaati aturan, tetapi juga tentang memahami posisi saya sebagai subjek yang aktif dalam mengawasi negara. Pancasila adalah hasil dari pengalaman panjang bangsa Indonesia, sehingga sangat relevan dengan kehidupan kita.",
+        icon: "������",
+        images: ["https://iili.io/f5rNxSt.md.jpg", "https://iili.io/f5rNIHX.md.jpg", "https://iili.io/f5rNllS.md.jpg"]
+      },
+      {
+        id: 2,
+        title: "Pertemuan 2: Sejarah Identitas Nasional",
+        question: "Mengapa bangsa yang sangat beragam bisa membangun identitas nasional bersama?",
+        summary: "Identitas nasional Indonesia lahir karena kesadaran kolektif bahwa persatuan adalah satu-satunya cara melawan kolonialisme, sehingga kelompok berbeda rela menurunkan identitas primordial demi kemerdekaan.",
+        fullDescription: "Pertemuan kedua mengupas bagaimana bangsa Indonesia yang sangat beragam mampu membangun identitas nasional bersama. Identitas nasional Indonesia lahir dari kesadaran kolektif bahwa persatuan adalah satu-satunya cara melawan kolonialisme. Pengalaman dijajah menjadi perekat utama yang melampaui perbedaan suku, agama, dan bahasa, melahirkan identitas 'Indonesia' sebagai kesepakatan bersama.",
+        reflection: "Keberagaman Indonesia adalah kekuatan, bukan kelemahan. Pengalaman dijajah menjadi perekat yang membuat berbagai kelompok berbeda rela menurunkan identitas primordial demi kemerdekaan. Kesadaran kolektif inilah yang melahirkan identitas 'Indonesia' sebagai kesepakatan bersama.",
+        icon: "�������",
+        images: ["https://iili.io/f5rv7p9.md.png", "https://iili.io/f5rvaIe.md.png", "https://iili.io/f5rO1BR.md.jpg"]
+      },
+      {
+        id: 3,
+        title: "Pertemuan 3: Rakyat, Hukum, Negara & Relasi Kekuasaan",
+        question: "Bagaimana Kontrak Sosial menjelaskan bahwa rakyat berhak mengoreksi bahkan menolak negara?",
+        summary: "Kontrak Sosial menegaskan bahwa negara ada karena rakyat menyerahkan sebagian haknya demi keteraturan, sehingga kekuasaan negara berasal dari rakyat dan hukum sah bila mencerminkan persetujuan mereka.",
+        fullDescription: "Pertemuan ketiga membahas tentang relasi antara rakyat, hukum, dan negara melalui konsep Kontrak Sosial. Kontrak Sosial menegaskan bahwa negara ada karena rakyat menyerahkan sebagian haknya demi keteraturan, sehingga kekuasaan negara berasal dari rakyat dan hukum sah bila mencerminkan persetujuan mereka. Karena negara terbentuk lewat kesepakatan, rakyat berhak mengoreksi atau menolak kekuasaan ketika negara melanggar kontrak atau gagal melindungi hak dasar warga.",
+        reflection: "Saya memahami bahwa kekuasaan negara berasal dari rakyat. Negara ada karena rakyat menyerahkan sebagian haknya demi keteraturan. Oleh karena itu, rakyat memiliki hak untuk mengoreksi bahkan menolak negara ketika negara melanggar kontrak sosial atau gagal melindungi hak dasar warga.",
+        icon: "⚖️",
+        images: ["https://iili.io/f5rNDen.md.jpg"]
+      },
+      {
+        id: 4,
+        title: "Pertemuan 4: Ideologi dan Falsafah Bangsa",
+        question: "Mengapa bangsa membutuhkan ideologi, dan bagaimana Pancasila mencerminkan realitas sosial Indonesia?",
+        summary: "Bangsa membutuhkan ideologi sebagai kompas moral bagi arah kehidupan politik dan sosial, dan Pancasila menawarkan pedoman inklusif bagi masyarakat yang beragam.",
+        fullDescription: "Pertemuan keempat fokus pada pentingnya ideologi bagi sebuah bangsa. Bangsa membutuhkan ideologi sebagai kompas moral bagi arah kehidupan politik dan sosial, dan Pancasila menawarkan pedoman inklusif bagi masyarakat yang beragam. Nilainya digali dari pengalaman bangsa sehingga mencerminkan cara hidup masyarakat Indonesia yang menekankan kemanusiaan, persatuan, dan keadilan.",
+        reflection: "Ideologi adalah kompas moral yang memberikan arah bagi kehidupan politik dan sosial bangsa. Pancasila sangat tepat sebagai ideologi Indonesia karena nilai-nilainya digali dari pengalaman dan cara hidup masyarakat Nusantara yang menekankan kemanusiaan, persatuan, dan keadilan sosial.",
+        icon: "⭐",
+        images: ["https://iili.io/f5rOchJ.md.jpg"]
+      },
+      {
+        id: 5,
+        title: "Pertemuan 5: Konstitusi",
+        question: "Mengapa konstitusi harus membatasi kekuasaan negara?",
+        summary: "Konstitusi membatasi kekuasaan agar tidak disalahgunakan dan memastikan tindakan pemerintah tunduk pada hukum, mencegah negara tergelincir menjadi otoriter.",
+        fullDescription: "Pertemuan kelima membahas peran konstitusi dalam membatasi kekuasaan negara. Konstitusi membatasi kekuasaan agar tidak disalahgunakan dan memastikan tindakan pemerintah tunduk pada hukum, mencegah negara tergelincir menjadi otoriter. Perubahan konstitusi Indonesia menunjukkan pendewasaan demokrasi karena tiap amandemen memperjelas kewenangan lembaga negara dan memperluas hak warga.",
+        reflection: "Konstitusi adalah instrumen penting untuk membatasi kekuasaan agar tidak disalahgunakan. Tanpa konstitusi, negara bisa dengan mudah menjadi otoriter. Perubahan konstitusi Indonesia melalui amandemen menunjukkan pendewasaan demokrasi dan komitmen untuk memperluas hak-hak warga negara.",
+        icon: "📜",
+        images: ["https://iili.io/f5reBaI.md.jpg"]
+      },
+      {
+        id: 6,
+        title: "Pertemuan 6: Fungsi dan Peran Negara",
+        question: "Bagaimana negara menjamin kesejahteraan rakyat, dan apa peran Good Governance?",
+        summary: "Negara menjamin kesejahteraan melalui keamanan, hukum, dan kebijakan publik yang sesuai kebutuhan masyarakat, bukan sekadar administrasi.",
+        fullDescription: "Pertemuan keenam membahas fungsi dan peran negara dalam menjamin kesejahteraan rakyat. Negara menjamin kesejahteraan melalui keamanan, hukum, dan kebijakan publik yang sesuai kebutuhan masyarakat, bukan sekadar administrasi. Good Governance memastikan negara bekerja transparan, akuntabel, dan efektif, sehingga pelayanan publik tidak jatuh pada korupsi atau ketidaktepatan kebijakan.",
+        reflection: "Negara memiliki tanggung jawab besar untuk menjamin kesejahteraan rakyat melalui berbagai kebijakan publik. Good Governance menjadi kunci agar negara bekerja secara transparan, akuntabel, dan efektif. Tanpa tata kelola yang baik, pelayanan publik bisa jatuh pada korupsi dan ketidakefektifan.",
+        icon: "�����",
+        images: ["https://iili.io/f5reHTg.md.jpg", "https://iili.io/f5rk3Ne.md.jpg"]
+      },
+      {
+        id: 9,
+        title: "Pertemuan 9: Demokrasi",
+        question: "Bagaimana demokrasi menjaga agar kekuasaan tetap berada di tangan rakyat?",
+        summary: "Demokrasi membagi kekuasaan, melindungi HAM, dan memberi ruang partisipasi agar pemerintah tidak bertindak sewenang-wenang, sehingga kepentingan rakyat menjadi orientasi utama.",
+        fullDescription: "Pertemuan kesembilan mengupas konsep demokrasi dan implementasinya di Indonesia. Demokrasi membagi kekuasaan, melindungi HAM, dan memberi ruang partisipasi agar pemerintah tidak bertindak sewenang-wenang, sehingga kepentingan rakyat menjadi orientasi utama. Di Indonesia, demokrasi bertahan karena fondasi etis, sosial, dan hukum yang menegaskan kedaulatan rakyat serta pentingnya persatuan dalam keberagaman.",
+        reflection: "Demokrasi adalah sistem yang menjaga agar kekuasaan tetap berada di tangan rakyat melalui pembagian kekuasaan, perlindungan HAM, dan ruang partisipasi. Demokrasi Indonesia bertahan karena fondasi etis dan sosial yang kuat, yang menegaskan kedaulatan rakyat dan pentingnya persatuan dalam keberagaman.",
+        icon: "🗳️",
+        images: ["https://iili.io/f5rkNf4.md.jpg", "https://iili.io/f5rkDe1.md.jpg", "https://iili.io/f5rvI14.md.jpg"]
+      },
+      {
+        id: 11,
+        title: "Pertemuan 11: Multikulturalisme",
+        question: "Mengapa masyarakat majemuk membutuhkan multikulturalisme?",
+        summary: "Multikulturalisme menjaga martabat setara tiap kelompok budaya dan mencegah dominasi mayoritas dengan menekankan penghargaan terhadap perbedaan.",
+        fullDescription: "Pertemuan kesebelas membahas pentingnya multikulturalisme dalam masyarakat majemuk seperti Indonesia. Multikulturalisme menjaga martabat setara tiap kelompok budaya dan mencegah dominasi mayoritas dengan menekankan penghargaan terhadap perbedaan. Di Indonesia, multikulturalisme selaras dengan Pancasila dan Bhinneka Tunggal Ika, sehingga keberagaman menjadi kekuatan, bukan sumber konflik.",
+        reflection: "Multikulturalisme sangat penting untuk menjaga martabat setara setiap kelompok budaya dan mencegah dominasi mayoritas. Di Indonesia, konsep ini selaras dengan Pancasila dan Bhinneka Tunggal Ika. Keberagaman harus dipandang sebagai kekuatan yang memperkaya bangsa, bukan sebagai sumber konflik.",
+        icon: "🌏",
+        images: ["https://iili.io/f5rgYcx.md.png", "https://iili.io/f5rgune.md.png", "https://iili.io/f5rUwT7.md.png"]
+      }
+    ];
+
+    const showcaseItems = [
+      {
+        id: 1,
+        type: "Podcast",
+        title: "Dialog Kewarganegaraan: Generasi Z dan Demokrasi",
+        description: "Analisis Sikap Warga Negara dalam Menghadapi Konflik Sosial (berdasarkan #KaburAjaDulu)",
+        fullDescription: `Podcast ini menunjukkan Analisis Sikap Warga Negara dalam Menghadapi Konflik Sosial (berdasarkan #KaburAjaDulu). 
+
+Ini adalah sebuah episode podcast yang saya buat dengan fokus mengeksplorasi bagaimana sikap warga negara dalam menghadapi berbagai konflik sosial di masyarakat. 
+
+Dalam podcast ini, saya mengulas perspektif berbeda tentang fenomena sosial kontemporer dengan pendekatan yang reflektif, menggabungkan gagasan dari hashtag #KaburAjaDulu untuk membuka diskusi yang jujur, kritis, dan relevan. 
+
+Diskusi ini tidak hanya menyampaikan informasi, tetapi juga mengajak pendengar berpikir lebih dalam tentang peran dan respons kita sebagai warga dalam kehidupan sosial yang kompleks. 
+
+(Ditayangkan dalam format audio/video yang bisa dinikmati melalui platform YouTube.)`,
+        tools: "Anchor, Audacity, Canva",
+        duration: "45 menit",
+        format: "Audio MP3",
+        icon: "🎙️",
+        achievements: "1000+ streaming, featured di Spotify Indonesia",
+        link: "https://youtu.be/CoxGaLMGmGI?si=iuwSfq-HiWipuUl3",
+        images: [],
+        thumbnailImage: "https://iili.io/f5vxFHl.md.png"
+      },
+      {
+        id: 2,
+        type: "Artikel",
+        title: "Pancasila di Era Digital: Relevansi dan Tantangan",
+        description: "Analisis Tren #KaburAjaDulu terhadap Sikap Warga Negara dalam Menghadapi Konflik Sosial",
+        fullDescription: `Pada bagian artikel ilmiah ini saya ingin menyampaian Analisis Tren #KaburAjaDulu terhadap Sikap Warga Negara dalam Menghadapi Konflik Sosial. 
+
+Pada proyek ini, saya bersama tim melakukan analisis mendalam mengenai fenomena viral #KaburAjaDulu, sebuah tren media sosial yang merefleksikan keresahan masyarakat terutama pada generasi muda dan terhadap kondisi sosial, ekonomi, dan politik Indonesia. 
+
+Penelitian ini berfokus pada bagaimana warga negara mengekspresikan sikap, kritik, dan harapan mereka melalui ruang digital. Dengan menggunakan pendekatan kualitatif deskriptif, analisis kami menggabungkan teori ABC Model of Attitudes, Social Learning Theory, dan Collective Behavior Theory. 
+
+Melalui survei, observasi konten media sosial, serta wawancara, kami memetakan bagaimana emosi, kepercayaan, dan perilaku publik terbentuk dalam fenomena ini. 
+
+Hasil penelitian menunjukkan bahwa #KaburAjaDulu bukan sekadar candaan, tetapi bentuk kritik sosial kolektif, ekspresi frustrasi, sekaligus wujud nasionalisme digital yang lebih reflektif. 
+
+Generasi muda menggunakan humor dan tagar sebagai sarana untuk menyuarakan ketidakadilan, keresahan ekonomi, hingga ketidakpercayaan terhadap institusi politik. 
+
+Proyek ini membantu saya memahami bagaimana media sosial kini menjadi ruang baru bagi partisipasi warga negara, serta bagaimana identitas dan kepedulian publik terbentuk melalui interaksi digital.`,
+        tools: "Google Docs, Grammarly, Medium",
+        duration: "3 minggu penelitian",
+        format: "Artikel 3500 kata",
+        icon: "📄",
+        achievements: "Published di Medium, 5000+ views, 200+ claps",
+        link: "https://drive.google.com/file/d/1fz6vWtAv7rCl9w544NgeQi8Dev7dyW0r/view?usp=drive_link",
+        images: [],
+        thumbnailImage: "https://iili.io/f5voj6b.md.png"
+      },
+      {
+        id: 3,
+        type: "Infografis",
+        title: "Sistem Pemerintahan Indonesia",
+        description: "Analisis fenomena digital #KaburAjaDulu dalam perspektif kewarganegaraan",
+        fullDescription: `Infografis ini merupakan rangkuman hasil analisis saya mengenai fenomena digital #KaburAjaDulu, sebuah tren di media sosial yang merefleksikan frustrasi publik terhadap kondisi sosial, ekonomi, dan politik. 
+
+Melalui pendekatan teori sikap, pembelajaran sosial, dan perilaku kolektif, saya meneliti bagaimana warga negara merespons konflik sosial melalui humor, kritik, dan ekspresi digital. 
+
+Lewat infografis ini, saya berupaya menggambarkan bagaimana media sosial berperan sebagai ruang partisipasi warga, serta bagaimana tren seperti #KaburAjaDulu dapat membentuk kesadaran kolektif dan nasionalisme reflektif di era digital.`,
+        tools: "Canva Pro, Adobe Illustrator, Figma",
+        duration: "2 minggu",
+        format: "PNG & PDF high-resolution",
+        icon: "📊",
+        achievements: "Digunakan sebagai materi ajar oleh 3 dosen",
+        link: "https://drive.google.com/file/d/1Ivy70kMZGAjwJq3FcYyJOBQrpCdFaE7p/view?usp=drive_link",
+        images: [],
+        thumbnailImage: "https://iili.io/f5kDOYv.md.png"
+      }
+    ];
+
+    async function onConfigChange(config) {
+      const elements = {
+        heroTitle: document.getElementById('hero-title'),
+        heroSubtitle: document.getElementById('hero-subtitle'),
+        ctaButton: document.getElementById('cta-button'),
+        introTitle: document.getElementById('intro-title'),
+        introText: document.getElementById('intro-text'),
+        footerCopyright: document.getElementById('footer-copyright')
+      };
+
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Arial, sans-serif';
+
+      if (elements.heroTitle) {
+        elements.heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+        elements.heroTitle.style.fontSize = window.innerWidth < 768 ? `${baseSize * 2.25}px` : `${baseSize * 3.5}px`;
+        elements.heroTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+
+      if (elements.heroSubtitle) {
+        elements.heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+        elements.heroSubtitle.style.fontSize = window.innerWidth < 768 ? `${baseSize * 1.25}px` : `${baseSize * 1.5}px`;
+        elements.heroSubtitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+
+      if (elements.ctaButton) {
+        elements.ctaButton.textContent = config.cta_button || defaultConfig.cta_button;
+        elements.ctaButton.style.fontSize = `${baseSize}px`;
+        elements.ctaButton.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+
+      if (elements.introTitle) {
+        elements.introTitle.textContent = config.intro_title || defaultConfig.intro_title;
+        elements.introTitle.style.fontSize = window.innerWidth < 768 ? `${baseSize * 1.75}px` : `${baseSize * 2.25}px`;
+        elements.introTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+
+      if (elements.introText) {
+        elements.introText.textContent = config.intro_text || defaultConfig.intro_text;
+        elements.introText.style.fontSize = window.innerWidth < 768 ? `${baseSize * 1.0625}px` : `${baseSize * 1.125}px`;
+        elements.introText.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+
+      if (elements.footerCopyright) {
+        elements.footerCopyright.textContent = config.footer_copyright || defaultConfig.footer_copyright;
+        elements.footerCopyright.style.fontSize = `${baseSize * 0.875}px`;
+        elements.footerCopyright.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      }
+    }
+
+    function renderNavbar() {
+      return `
+        <nav class="navbar-component">
+          <div class="section-content px-4 md:px-6 py-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg overflow-hidden">
+                  <img src="https://iili.io/f5Mz6u4.md.png" alt="Renaldi Pasapan" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML = '<div class=\'w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-base md:text-lg\'>RP</div>';">
+                </div>
+                <span class="font-heading font-bold text-base md:text-lg">Renaldi Pasapan</span>
+              </div>
+              
+              <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                <a onclick="navigateTo('home')" class="nav-link font-ui ${currentPage === 'home' ? 'active' : ''}">Home</a>
+                <a onclick="navigateTo('modules')" class="nav-link font-ui ${currentPage === 'modules' || currentPage === 'module-detail' ? 'active' : ''}">Modul Pembelajaran</a>
+                <a onclick="navigateTo('showcase')" class="nav-link font-ui ${currentPage === 'showcase' ? 'active' : ''}">Showcase Karya</a>
+                <a onclick="navigateTo('reflection')" class="nav-link font-ui ${currentPage === 'reflection' ? 'active' : ''}">Refleksi Akhir</a>
+              </div>
+
+              <div class="flex items-center gap-3 md:gap-4">
+                <div class="theme-toggle-component" onclick="toggleDarkMode()">
+                  <div class="theme-icon ${isDarkMode ? 'visible' : 'hidden'}">🌙</div>
+                  <div class="theme-icon ${isDarkMode ? 'hidden' : 'visible'}">☀️</div>
+                </div>
+                <div class="md:hidden hamburger ${mobileMenuOpen ? 'open' : ''}" onclick="toggleMobileMenu()">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mobile-menu ${mobileMenuOpen ? 'open' : ''} md:hidden">
+              <div class="flex flex-col gap-2">
+                <a onclick="navigateTo('home'); toggleMobileMenu();" class="nav-link font-ui">Home</a>
+                <a onclick="navigateTo('modules'); toggleMobileMenu();" class="nav-link font-ui">Modul Pembelajaran</a>
+                <a onclick="navigateTo('showcase'); toggleMobileMenu();" class="nav-link font-ui">Showcase Karya</a>
+                <a onclick="navigateTo('reflection'); toggleMobileMenu();" class="nav-link font-ui">Refleksi Akhir</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      `;
+    }
+
+    function renderHomePage() {
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      return `
+        <div class="fade-in">
+          <!-- Dark Mode Toggle on Homepage -->
+          <div style="position: fixed; top: 24px; right: 24px; z-index: 1000;">
+            <div class="theme-toggle-component" onclick="toggleDarkMode()">
+              <div class="theme-icon ${isDarkMode ? 'visible' : 'hidden'}">🌙</div>
+              <div class="theme-icon ${isDarkMode ? 'hidden' : 'visible'}">☀️</div>
+            </div>
+          </div>
+
+          <!-- Hero Section - Full Screen -->
+          <section class="section-wrapper" style="min-height: 100%; display: flex; align-items: center; justify-content: center; padding-top: 40px; padding-bottom: 40px;">
+            <div class="section-content text-center">
+              <h1 class="font-heading font-bold mb-8 md:mb-12 px-4" style="font-size: 40px; line-height: 1.2; background: linear-gradient(135deg, #3A7AFE 0%, #8b5cf6 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: float-avatar 4s ease-in-out infinite; filter: drop-shadow(0 0 20px rgba(58, 122, 254, 0.5)) drop-shadow(0 0 40px rgba(139, 92, 246, 0.3));">
+                PORTOFOLIO
+              </h1>
+              <div class="mb-8 md:mb-10">
+                <div class="avatar-component mx-auto" style="overflow: hidden;">
+                  <div class="avatar-ring"></div>
+                  <img src="https://iili.io/f5Mz6u4.md.png" alt="Renaldi Pasapan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" onerror="this.style.display='none'; this.parentElement.innerHTML += '&#x1F468;&#x200D;&#x1F393;';">
+                </div>
+              </div>
+              <h2 class="font-heading font-bold mb-4 md:mb-6 px-4" style="font-size: 32px; line-height: 1.2; background: linear-gradient(135deg, #3A7AFE 0%, #8b5cf6 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 8px rgba(58, 122, 254, 0.4)) drop-shadow(0 0 15px rgba(139, 92, 246, 0.2));">
+                - RENALDI PASAPAN -
+              </h2>
+              <p class="font-subheading mb-10 md:mb-12 max-w-2xl mx-auto px-4 text-lg md:text-xl" style="color: var(--text-secondary);">
+                Website Portofolio Mata Kuliah Kewarganegaraan
+              </p>
+              <button onclick="scrollToNavigation()" class="btn-primary font-ui mb-4">
+                Mulai Jelajahi
+              </button>
+            </div>
+          </section>
+
+          <!-- Navigation Cards Section -->
+          <section id="navigation-section" class="section-wrapper" style="padding-top: 60px; padding-bottom: 60px;">
+            <div class="section-content">
+              <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+                  <button onclick="navigateTo('modules')" class="home-nav-card">
+                    <div class="text-5xl md:text-6xl mb-4">&#x1F4DA;</div>
+                    <h3 class="font-subheading font-bold text-lg md:text-xl mb-2">Modul Pembelajaran</h3>
+                    <p class="font-ui text-sm" style="color: var(--text-secondary);">Rangkuman 8 materi pertemuan pembelajaran Kewarganegaraan</p>
+                  </button>
+                  
+                  <button onclick="navigateTo('showcase')" class="home-nav-card">
+                    <div class="text-5xl md:text-6xl mb-4">&#x1F3A8;</div>
+                    <h3 class="font-subheading font-bold text-lg md:text-xl mb-2">Showcase Karya</h3>
+                    <p class="font-ui text-sm" style="color: var(--text-secondary);">Hasil karya saya</p>
+                  </button>
+                  
+                  <button onclick="navigateTo('reflection')" class="home-nav-card">
+                    <div class="text-5xl md:text-6xl mb-4">&#x1F4AD;</div>
+                    <h3 class="font-subheading font-bold text-lg md:text-xl mb-2">Refleksi Akhir</h3>
+                    <p class="font-ui text-sm" style="color: var(--text-secondary);">Evaluasi selama pembelajaran</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Connect With Me Section -->
+          <section class="section-wrapper" style="padding-top: 40px; padding-bottom: 80px;">
+            <div class="section-content text-center">
+              <h2 class="font-heading font-bold mb-6 md:mb-8 text-2xl md:text-3xl">Connect With Me</h2>
+              <div class="flex justify-center gap-4 flex-wrap max-w-md mx-auto">
+                <a href="https://www.instagram.com/siriouslei?igsh=MTd6cGczcXZtM2JlZw==" target="_blank" rel="noopener noreferrer" class="social-icon-component" title="Instagram">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a href="https://github.com/renaldipasapan-source" target="_blank" rel="noopener noreferrer" class="social-icon-component" title="GitHub">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/renaldi-pasapan-a208743a0" target="_blank" rel="noopener noreferrer" class="social-icon-component" title="LinkedIn">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@RenaldiPasapan" target="_blank" rel="noopener noreferrer" class="social-icon-component" title="YouTube">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderModulesPage() {
+      return `
+        <div class="fade-in" style="padding-top: 100px;">
+          <section class="section-wrapper">
+            <div class="section-content">
+              <div class="text-center mb-12 md:mb-16">
+                <h1 class="font-heading font-bold mb-4 md:mb-6" style="font-size: 40px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.05em;">Modul Pembelajaran</h1>
+                <p class="font-ui text-xl md:text-2xl" style="color: var(--text-secondary);">Hasil rangkuman pembelajaran selama pertemuan mata kuliah Kewarganegaraan</p>
+              </div>
+              
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                ${modules.map((module, index) => `
+                  <div onclick="viewModule(${module.id})" class="module-card scroll-reveal" style="animation-delay: ${index * 0.1}s; display: flex; flex-direction: column;">
+                    <div class="flex items-start gap-4 mb-4">
+                      <div class="chip-component">Pertemuan ${module.id}</div>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl mb-3">${module.title.split(': ')[1]}</h3>
+                    <div class="module-question mb-4">
+                      <p class="font-ui text-sm">${module.question}</p>
+                    </div>
+                    <p class="font-ui text-sm mb-5" style="color: var(--text-secondary); line-height: 1.6; flex: 1;">${module.summary}</p>
+                    <button class="btn-primary font-ui text-sm w-full" style="margin-top: auto;">Lihat Detail</button>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="text-center mt-12 md:mt-16">
+                <button onclick="navigateTo('home')" class="btn-secondary font-ui">
+                  Kembali ke Home
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderModuleDetail(moduleId) {
+      const module = modules.find(m => m.id === moduleId);
+      if (!module) return '';
+
+      return `
+        <div class="slide-in-left" style="padding-top: 100px;">
+          <section class="section-wrapper">
+            <div class="section-content max-w-5xl mx-auto">
+              <button onclick="navigateTo('modules')" class="btn-secondary font-ui mb-6 md:mb-8">
+                Kembali ke Modul
+              </button>
+              
+              <div class="card-component">
+                <div class="flex items-center gap-4 mb-6">
+                  <div>
+                    <div class="chip-component mb-2">Pertemuan ${module.id}</div>
+                    <h1 class="font-heading font-bold">${module.title}</h1>
+                  </div>
+                </div>
+                
+                <div class="mb-8 p-5 md:p-6 rounded-xl" style="background: var(--bg-tertiary);">
+                  <h2 class="font-subheading font-bold mb-3 flex items-center gap-2 text-2xl">
+                    Pertanyaan Inti
+                  </h2>
+                  <p class="font-body italic" style="color: var(--accent);">${module.question}</p>
+                </div>
+                
+                <div class="mb-8">
+                  <h2 class="font-subheading font-bold mb-4 text-2xl">Ringkasan Pembahasan</h2>
+                  <p class="font-body" style="color: var(--text-secondary);">${module.fullDescription}</p>
+                </div>
+                
+                <div class="mb-8">
+                  <h2 class="font-subheading font-bold mb-4 text-2xl">Bukti Pembelajaran</h2>
+                  <div class="gallery-component">
+                    ${module.images && module.images.length > 0 ? module.images.map((imgUrl, idx) => `
+                      <div onclick="openImagePreview(${JSON.stringify(module.images).replace(/"/g, '&quot;')}, ${idx})" class="gallery-item" style="overflow: hidden; cursor: pointer;">
+                        <img src="${imgUrl}" alt="${module.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML = '📷';">
+                      </div>
+                    `).join('') : `
+                      <div class="gallery-item">📷</div>
+                      <div class="gallery-item">📷</div>
+                      <div class="gallery-item">📷</div>
+                    `}
+                  </div>
+                </div>
+                
+                <div>
+                  <h2 class="font-subheading font-bold mb-4 md:mb-6 text-2xl">Refleksi Pertemuan</h2>
+                  <div class="p-5 md:p-6 rounded-xl" style="background: var(--bg-tertiary);">
+                    <p class="font-body" style="color: var(--text-secondary);">${module.reflection}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderShowcasePage() {
+      return `
+        <div class="fade-in" style="padding-top: 100px;">
+          <section class="section-wrapper">
+            <div class="section-content">
+              <div class="text-center mb-12 md:mb-16">
+                <h1 class="font-heading font-bold mb-4 md:mb-6" style="font-size: 40px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.05em;">Showcase Karya</h1>
+                <p class="font-ui text-xl md:text-2xl" style="color: var(--text-secondary);">Koleksi hasil karya pembelajaran kewarganegaraan</p>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+                ${showcaseItems.map((item, index) => {
+                  const thumbnailContent = item.thumbnailImage ? `
+                    <img src="${item.thumbnailImage}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none';">
+                  ` : '';
+                  
+                  return `
+                  <div onclick="viewShowcase(${item.id})" class="showcase-card scroll-reveal" style="animation-delay: ${index * 0.1}s; display: flex; flex-direction: column; height: 100%;">
+                    <div class="showcase-thumbnail" style="background: ${item.thumbnailImage ? 'var(--bg-tertiary)' : 'linear-gradient(135deg, var(--accent) 0%, #8b5cf6 50%, #ec4899 100%); opacity: 0.15'};">
+                      ${thumbnailContent}
+                    </div>
+                    <div class="showcase-content" style="display: flex; flex-direction: column; flex: 1;">
+                      <div class="chip-component mb-3">${item.type}</div>
+                      <h3 class="font-heading font-bold text-lg mb-2">${item.title}</h3>
+                      <p class="font-ui text-sm mb-4" style="color: var(--text-secondary); line-height: 1.6; flex: 1;">${item.description}</p>
+                      <button class="btn-primary font-ui w-full text-sm">Lihat Detail</button>
+                    </div>
+                  </div>
+                `;
+                }).join('')}
+              </div>
+
+              <div class="text-center mt-12 md:mt-16">
+                <button onclick="navigateTo('home')" class="btn-secondary font-ui">
+                  Kembali ke Home
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderShowcaseModal(itemId) {
+      const item = showcaseItems.find(i => i.id === itemId);
+      if (!item) return '';
+
+      const imageGallery = item.images && item.images.length > 0 ? `
+        <div class="mb-6">
+          <h3 class="font-subheading font-bold mb-3 text-xl">Galeri Gambar</h3>
+          <div class="grid grid-cols-1 md:grid-cols-${item.images.length > 1 ? '2' : '1'} gap-4">
+            ${item.images.map(img => `
+              <div class="rounded-xl overflow-hidden border border-solid" style="border-color: var(--border);">
+                <img src="${img}" alt="${item.title}" style="width: 100%; height: auto; display: block;" onerror="this.style.display='none'; this.parentElement.innerHTML = '<div style=\'padding: 60px; text-align: center; color: var(--text-tertiary);\'>Gambar tidak tersedia</div>';">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : '';
+
+      const linkButton = item.link ? `
+        <div class="mt-6 pt-6" style="border-top: 1px solid var(--border);">
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn-primary font-ui w-full inline-block text-center" style="text-decoration: none;">
+            Lihat ${item.type} Lengkap
+          </a>
+        </div>
+      ` : '';
+
+      // Determine description title based on type
+      let descriptionTitle = 'Deskripsi Lengkap';
+      if (item.type === 'Podcast') {
+        descriptionTitle = 'Deskripsi Podcast';
+      } else if (item.type === 'Artikel') {
+        descriptionTitle = 'Deskripsi Artikel Ilmiah';
+      } else if (item.type === 'Infografis') {
+        descriptionTitle = 'Deskripsi Infografis';
+      }
+
+      return `
+        <div class="modal-overlay" onclick="closeModal(event)">
+          <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            
+            <div class="flex items-center gap-4 mb-6">
+              <div>
+                <div class="chip-component mb-2">${item.type}</div>
+                <h2 class="font-heading font-bold text-2xl">${item.title}</h2>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-subheading font-bold mb-4 text-xl">${descriptionTitle}</h3>
+                <div class="font-body" style="color: var(--text-secondary); line-height: 1.8; white-space: pre-line;">${item.fullDescription}</div>
+              </div>
+
+              ${imageGallery}
+
+              ${linkButton}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderReflectionPage() {
+      return `
+        <div class="fade-in" style="padding-top: 100px;">
+          <section class="section-wrapper">
+            <div class="section-content max-w-4xl mx-auto">
+              <div class="text-center mb-12 md:mb-16">
+                <h1 class="font-heading font-bold mb-4 md:mb-6" style="font-size: 40px; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.05em;">Refleksi Akhir</h1>
+                <p class="font-ui text-xl md:text-2xl" style="color: var(--text-secondary);">Evaluasi dan pembaharuan pengetahuan Kewarganegaraan</p>
+              </div>
+              
+              <div class="reflection-container">
+                <div class="reflection-card scroll-reveal">
+                  <h2 class="font-heading font-bold mb-5 text-3xl">Evaluasi Pengetahuan Kewarganegaraan</h2>
+                  <div class="reflection-text">
+                    <p class="font-body mb-5" style="color: var(--text-secondary);">
+                      Selama mempelajari materi kewarganegaraan, saya mulai melihat bahwa negara bukan hanya soal aturan dan lembaga, tapi tentang bagaimana kita hidup berdampingan sebagai satu masyarakat. Setiap topik yang dipelajari mulai dari identitas bangsa, hukum, sampai cara kerja kekuasaan, membantu saya memahami gambaran besar tentang bagaimana sebuah negara bisa berjalan dengan stabil. Pembelajaran ini membuat saya lebih sadar bahwa keberlangsungan negara tidak hanya bergantung pada pemerintah, tetapi juga pada kesadaran dan sikap setiap warganya.
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="reflection-card scroll-reveal" style="animation-delay: 0.2s;">
+                  <h2 class="font-heading font-bold mb-5 text-3xl">Pembaharuan Sikap & Pengetahuan</h2>
+                  <div class="reflection-text">
+                    <p class="font-body mb-5" style="color: var(--text-secondary);">
+                      Dari proses ini, saya merasa sikap saya sebagai warga negara berkembang menjadi lebih peduli dan reflektif. Nilai-nilai yang sebelumnya hanya saya kenal sebagai teori, kini terasa lebih relevan dalam kehidupan sehari-hari. Seperti pentingnya menghargai perbedaan, menjaga keadilan, dan ikut terlibat dalam hal-hal yang berdampak bagi lingkungan sekitar. Saya jauh menjadi lebih memahami bahwa menjadi warga negara yang baik bukan soal hal besar contohnya untuk kekuasaaan saja, tetapi tentang menjaga konsistensi dalam tindakan kecil yang menunjukkan rasa tanggung jawab terhadap bangsa dan negara.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center mt-12 md:mt-16">
+                <button onclick="navigateTo('home')" class="btn-secondary font-ui">
+                  Kembali ke Home
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderFooter() {
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      
+      return `
+        <footer class="footer-component">
+          <div class="section-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h3 class="font-subheading font-bold mb-4">Navigasi</h3>
+                <div class="space-y-3">
+                  <a onclick="navigateTo('home')" class="nav-link cursor-pointer font-ui inline-block">Home</a>
+                  <a onclick="navigateTo('modules')" class="nav-link cursor-pointer font-ui inline-block">Modul Pembelajaran</a>
+                  <a onclick="navigateTo('showcase')" class="nav-link cursor-pointer font-ui inline-block">Showcase Karya</a>
+                  <a onclick="navigateTo('reflection')" class="nav-link cursor-pointer font-ui inline-block">Refleksi Akhir</a>
+                </div>
+              </div>
+              
+              <div>
+                <h3 class="font-subheading font-bold mb-4">Connect With Me</h3>
+                <div class="flex gap-4 flex-wrap">
+                  <a href="https://www.instagram.com/siriouslei?igsh=MTd6cGczcXZtM2JlZw==" target="_blank" rel="noopener noreferrer" class="social-icon-component">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a href="https://github.com/renaldipasapan-source" target="_blank" rel="noopener noreferrer" class="social-icon-component">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/renaldi-pasapan-a208743a0" target="_blank" rel="noopener noreferrer" class="social-icon-component">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.youtube.com/@RenaldiPasapan" target="_blank" rel="noopener noreferrer" class="social-icon-component">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center pt-8" style="border-top: 1px solid var(--border);">
+              <p id="footer-copyright" class="font-ui" style="color: var(--text-tertiary);">${config.footer_copyright || defaultConfig.footer_copyright}</p>
+            </div>
+          </div>
+        </footer>
+      `;
+    }
+
+    function render() {
+      const app = document.getElementById('app');
+      const animatedBg = document.getElementById('animatedBg');
+      let content = '';
+
+      // Show animated background only on home page
+      if (currentPage === 'home') {
+        animatedBg.style.display = 'block';
+        startParticleAnimation();
+      } else {
+        animatedBg.style.display = 'none';
+        stopParticleAnimation();
+      }
+
+      if (currentPage === 'home') {
+        content = renderHomePage();
+      } else if (currentPage === 'modules') {
+        content = renderModulesPage();
+      } else if (currentPage === 'module-detail') {
+        content = renderModuleDetail(selectedModule);
+      } else if (currentPage === 'showcase') {
+        content = renderShowcasePage();
+      } else if (currentPage === 'reflection') {
+        content = renderReflectionPage();
+      }
+
+      // Show navbar only on non-home pages
+      const navbar = currentPage === 'home' ? '' : renderNavbar();
+      // Show footer only on non-home pages
+      const footer = currentPage === 'home' ? '' : renderFooter();
+      app.innerHTML = navbar + content + footer;
+
+      if (selectedShowcase) {
+        app.innerHTML += renderShowcaseModal(selectedShowcase);
+      }
+
+      if (imagePreview.visible) {
+        app.innerHTML += renderImagePreviewModal();
+      }
+
+      setTimeout(() => {
+        const reveals = document.querySelectorAll('.scroll-reveal');
+        reveals.forEach((el, index) => {
+          setTimeout(() => {
+            el.classList.add('revealed');
+          }, index * 100);
+        });
+      }, 100);
+
+      if (window.elementSdk && window.elementSdk.config) {
+        onConfigChange(window.elementSdk.config);
+      }
+    }
+
+    function navigateTo(page) {
+      currentPage = page;
+      selectedModule = null;
+      selectedShowcase = null;
+      mobileMenuOpen = false;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      render();
+    }
+
+    function viewModule(moduleId) {
+      selectedModule = moduleId;
+      currentPage = 'module-detail';
+      mobileMenuOpen = false;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      render();
+    }
+
+    function viewShowcase(itemId) {
+      selectedShowcase = itemId;
+      render();
+    }
+
+    function closeModal(event) {
+      if (!event || event.target.classList.contains('modal-overlay') || event.target.classList.contains('close-btn')) {
+        selectedShowcase = null;
+        render();
+      }
+    }
+
+    function renderImagePreviewModal() {
+      const currentImage = imagePreview.images[imagePreview.currentIndex];
+      const showNav = imagePreview.images.length > 1;
+      const zoomPercent = Math.round(imagePreview.zoom * 100);
+      
+      return `
+        <div class="image-preview-modal" onclick="if(event.target === event.currentTarget) closeImagePreview()">
+          <div class="image-preview-content">
+            <button class="image-preview-close" onclick="closeImagePreview()">×</button>
+            <div class="image-preview-wrapper">
+              <img src="${currentImage}" alt="Preview gambar ${imagePreview.currentIndex + 1}" style="transform: scale(${imagePreview.zoom});" onerror="this.alt='Gagal memuat gambar';">
+            </div>
+            ${showNav && imagePreview.currentIndex > 0 ? `
+              <button class="image-preview-nav prev" onclick="navigateImage(-1)">‹</button>
+            ` : ''}
+            ${showNav && imagePreview.currentIndex < imagePreview.images.length - 1 ? `
+              <button class="image-preview-nav next" onclick="navigateImage(1)">›</button>
+            ` : ''}
+            <div class="zoom-controls">
+              <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out (-)">−</button>
+              <div class="zoom-level">${zoomPercent}%</div>
+              <button class="zoom-btn" onclick="zoomIn()" title="Zoom In (+)">+</button>
+              <button class="zoom-btn" onclick="resetZoom()" title="Reset (0)" style="font-size: 16px;">↻</button>
+            </div>
+            ${showNav ? `
+              <div class="image-preview-counter">${imagePreview.currentIndex + 1} / ${imagePreview.images.length}</div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function scrollToNavigation() {
+      const navSection = document.getElementById('navigation-section');
+      if (navSection) {
+        navSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    window.navigateTo = navigateTo;
+    window.viewModule = viewModule;
+    window.viewShowcase = viewShowcase;
+    window.closeModal = closeModal;
+    window.scrollToNavigation = scrollToNavigation;
+
+    if (window.elementSdk) {
+      const capabilities = {
+        recolorables: [
+          {
+            get: () => window.elementSdk.config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              window.elementSdk.config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => window.elementSdk.config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              window.elementSdk.config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => window.elementSdk.config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              window.elementSdk.config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => window.elementSdk.config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              window.elementSdk.config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => window.elementSdk.config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              window.elementSdk.config.secondary_action_color = value;
+              window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => window.elementSdk.config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            window.elementSdk.config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => window.elementSdk.config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            window.elementSdk.config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => capabilities,
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['cta_button', config.cta_button || defaultConfig.cta_button],
+          ['intro_title', config.intro_title || defaultConfig.intro_title],
+          ['intro_text', config.intro_text || defaultConfig.intro_text],
+          ['footer_copyright', config.footer_copyright || defaultConfig.footer_copyright]
+        ])
+      });
+    }
+
+    render();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ace20f87038ba3d',t:'MTc2NTU1MjAxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
